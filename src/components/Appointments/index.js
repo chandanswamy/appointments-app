@@ -1,6 +1,7 @@
 // Write your code here
 import {Component} from 'react'
 import {v4 as uuidv4} from 'uuid'
+import AppointmentItem from '../AppointmentItem'
 import './index.css'
 
 class Appointments extends Component {
@@ -24,6 +25,23 @@ class Appointments extends Component {
       date,
       isFavourite: false,
     }
+
+    this.setState(prevState => ({
+      appointmentsList: [...prevState.appointmentsList, createAppointment],
+      title: '',
+      date: '',
+    }))
+  }
+
+  toggleIsFavourite = id => {
+    this.setState(prevState => ({
+      appointmentsList: prevState.appointmentsList.map(eachAppointment => {
+        if (eachAppointment.id === id) {
+          return {...eachAppointment, isFavourite: !eachAppointment.isFavourite}
+        }
+        return eachAppointment
+      }),
+    }))
   }
 
   render() {
@@ -62,9 +80,24 @@ class Appointments extends Component {
           <hr />
           <div className="section-two">
             <h1 className="appointments-heading">Appointments</h1>
-            <button className="starred-button" type="button">
+            <button
+              className="starred-button"
+              type="button"
+              onClick={this.onClickStarred}
+            >
               Starred
             </button>
+          </div>
+          <div className="section-three">
+            <ul className="appointments-list-container">
+              {appointmentsList.map(eachAppointment => (
+                <AppointmentItem
+                  key={eachAppointment.id}
+                  appointmentDetails={eachAppointment}
+                  toggleIsFavourite={this.toggleIsFavourite}
+                />
+              ))}
+            </ul>
           </div>
         </div>
       </div>

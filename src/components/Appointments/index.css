@@ -26,7 +26,7 @@
   margin-top: 32px;
   margin-bottom: 32px;
   border-radius: 14px;
-  padding: 32px;
+  padding: 22px;
 }
 
 @media screen and (min-width: 768px) {
@@ -90,7 +90,7 @@ label {
 
 input {
   width: 99%;
-  max-width: 320px;
+  max-width: 450px;
   height: 38px;
   margin-top: 8px;
   padding-left: 12px;
@@ -127,17 +127,47 @@ input:focus {
 }
 
 .appointments-heading {
-  font-size: 18px;
+  font-size: 14px;
   color: #171f46;
   margin: 0px;
+}
+
+@media screen and (min-width: 768px) {
+  .appointments-heading {
+    font-size: 18px;
+    color: #171f46;
+    margin: 0px;
+  }
 }
 
 .starred-button {
   border: 1px solid #9897f0;
   border-radius: 14px;
-  width: 82px;
-  height: 30px;
-  font-size: 14px;
+  width: 62px;
+  font-size: 12px;
   font-family: Roboto;
   background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .starred-button {
+    border: 1px solid #9897f0;
+    border-radius: 14px;
+    width: 82px;
+    font-size: 14px;
+    font-family: Roboto;
+    background-color: transparent;
+  }
+}
+
+.section-three {
+  margin-top: 14px;
+}
+
+.appointments-list-container {
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
