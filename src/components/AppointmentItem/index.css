@@ -4,7 +4,7 @@
 }
 
 .appointment-card {
-  width: 210px;
+  width: 250px;
   border: 1px solid #b5b7c4;
   border-radius: 6px;
   padding: 12px;
@@ -28,7 +28,7 @@
 
 .appointment-date {
   color: #b5b7c4;
-  font-size: 16px;
+  font-size: 14px;
   font-family: Roboto;
 }
 

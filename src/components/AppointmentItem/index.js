@@ -48,7 +48,12 @@ const AppointmentItem = props => {
         <div className="appointment-card">
           <div className="top-section">
             <p className="title">{title}</p>
-            <button type="button" className="star-button" onClick={onClickStar}>
+            <button
+              data-testid="star"
+              type="button"
+              className="star-button"
+              onClick={onClickStar}
+            >
               <img src={favImageUrl} alt="star" />
             </button>
           </div>

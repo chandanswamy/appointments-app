@@ -31,7 +31,8 @@
 
 @media screen and (min-width: 768px) {
   .add-appointments {
-    width: 720px;
+    width: 90%;
+    max-width: 900px;
     background-color: #ffffff;
     margin-top: 32px;
     margin-bottom: 32px;
@@ -158,6 +159,11 @@ input:focus {
     font-family: Roboto;
     background-color: transparent;
   }
+}
+
+.active {
+  background-color: #8b5cf6;
+  color: #ffffff;
 }
 
 .section-three {

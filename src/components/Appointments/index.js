@@ -5,7 +5,7 @@ import AppointmentItem from '../AppointmentItem'
 import './index.css'
 
 class Appointments extends Component {
-  state = {appointmentsList: [], title: '', date: ''}
+  state = {appointmentsList: [], title: '', date: '', isFilterActive: false}
 
   onTitleChange = event => {
     this.setState({title: event.target.value})
@@ -44,8 +44,25 @@ class Appointments extends Component {
     }))
   }
 
+  onClickStarred = () => {
+    this.setState(prevState => ({isFilterActive: !prevState.isFilterActive}))
+  }
+
+  getFilteredAppointmentsList = () => {
+    const {appointmentsList, isFilterActive} = this.state
+
+    if (isFilterActive) {
+      return appointmentsList.filter(
+        eachTransaction => eachTransaction.isFavourite === true,
+      )
+    }
+    return appointmentsList
+  }
+
   render() {
-    const {appointmentsList, title, date} = this.state
+    const {title, date, isFilterActive} = this.state
+    const filterClassName = isFilterActive ? 'active' : ''
+    const filteredAppointmentList = this.getFilteredAppointmentsList()
 
     return (
       <div className="app-container">
@@ -81,7 +98,7 @@ class Appointments extends Component {
           <div className="section-two">
             <h1 className="appointments-heading">Appointments</h1>
             <button
-              className="starred-button"
+              className={`starred-button ${filterClassName}`}
               type="button"
               onClick={this.onClickStarred}
             >
@@ -90,7 +107,7 @@ class Appointments extends Component {
           </div>
           <div className="section-three">
             <ul className="appointments-list-container">
-              {appointmentsList.map(eachAppointment => (
+              {filteredAppointmentList.map(eachAppointment => (
                 <AppointmentItem
                   key={eachAppointment.id}
                   appointmentDetails={eachAppointment}
